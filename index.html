@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Natanem Couture  | High Fashion</title>
+    <title>Natanem Couture | High Fashion</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -262,21 +262,450 @@
 <body class="font-sans antialiased">
 
     <!-- Preloader -->
- 
+    <div id="preloader">
+        <div class="ripple-container">
+            <div class="ripple"></div>
+            <div class="ripple"></div>
+            <div class="ripple"></div>
+        </div>
+        <div class="loader-logo">Natanem Couture</div>
+    </div>
+
+    <!-- Hero Slideshow -->
+    <div class="slideshow-container">
+        <div class="slide active" style="background-image: url('./first.jpg');"></div>
+        <div class="hero-overlay"></div>
+    </div>
 
     <!-- Header -->
-    <header id="main-header">
-    
-          <text>dfsf</text>
-     
+    <header id="main-header"
+        class="fixed w-full top-0 z-50 py-8 text-white transition-all duration-500 hover:bg-white hover:text-black">
+        <div class="container mx-auto px-8 md:px-16 flex justify-between items-center">
+            <nav class="hidden md:flex space-x-12 w-1/3">
+                <a href="#collections" class="nav-item">Collections</a>
+                <a href="#maison" class="nav-item">Maison</a>
+                <a href="#atelier" class="nav-item">Atelier</a>
+            </nav>
+            <div class="w-1/3 flex justify-center text-center">
+                <a href="#" class="group block">
+                    <h1 class="brand-logo text-3xl md:text-5xl tracking-mega uppercase font-normal leading-none">Natanem
+                    </h1>
+                </a>
+            </div>
+            <div class="flex items-center justify-end space-x-10 w-1/3">
+                <nav class="hidden md:flex space-x-12">
+                    <a href="#bespoke" class="nav-item">Bespoke</a>
+                    <a href="#journal" class="nav-item">Journal</a>
+                </nav>
+                <button
+                    class="text-[0.65rem] border border-current px-3 py-1 tracking-widest hover:bg-white hover:text-black transition-all"
+                    id="langToggle">AM</button>
+            </div>
+        </div>
     </header>
 
-   
- <!-- Hero -->
- 
- 
+    <!-- Hero -->
+    <section class="relative h-screen flex flex-col items-center justify-center text-white text-center">
+        <div class="relative z-10 px-6 max-w-4xl">
+            <p class="text-[0.6rem] tracking-[0.5em] uppercase mb-10 opacity-80 reveal active">
+                <span class="en-text">Ethiopian Made</span>
+                <span class="am-text hidden-lang font-amharic text-lg">በኢትዮጵያ የተሰራ</span>
+            </p>
+            <h2 class="font-serif text-5xl md:text-8xl mb-12 font-light leading-tight reveal active delay-200">
+                <span id="hero-en">Heritage <i class="font-thin italic text-champagne">Reimagined</i></span>
+                <span id="hero-am" class="font-amharic hidden-lang text-4xl md:text-6xl font-normal">ጥበብ <i
+                        class="text-champagne">በዘመናዊ እይታ</i></span>
+            </h2>
+            <div class="reveal active delay-300">
+                <a href="#collections"
+                    class="text-[0.65rem] tracking-[0.3em] uppercase border-b border-white/40 pb-2 hover:border-white transition-all duration-500">Explore
+                    Collections</a>
+            </div>
+        </div>
+    </section>
 
- 
+    <!-- Content Area -->
+    <div class="bg-offWhite relative z-20">
+
+        <!-- Intro Section (Maison) -->
+        <section id="maison" class="py-32 md:py-48 px-8">
+            <div class="container mx-auto max-w-5xl text-center">
+                <div class="reveal">
+                    <span class="text-burgundy text-[0.6rem] tracking-[0.4em] uppercase block mb-8">The Maison</span>
+                    <h2 class="font-serif text-3xl md:text-5xl mb-12 leading-tight text-offBlack">
+                        <span class="en-text">Ethiopian soul. Modern silence.</span>
+                        <span class="am-text hidden-lang font-amharic">የኢትዮጵያ ስር-ነቀል ጥበብ በዘመናዊ ድምፅ-አልባ ፋሽን።</span>
+                    </h2>
+                    <p class="text-gray-500 font-light leading-loose text-sm max-w-2xl mx-auto">
+                        <span class="en-text">Natanem Couture weaves ancestral storytelling into the quiet luxury of
+                            modern silhouettes. A dialogue between the weight of history and the lightness of the
+                            future.</span>
+                        <span class="am-text hidden-lang font-amharic">ናታነም የጥንት የታሪክ ትረካዎችን ከዘመናዊው የፋሽን ጥበብ ጋር በማዋሃድ
+                            ይሰራል። ይህ ጥበብ በትላንትናው ታሪክ ግርማና በነገው ብሩህ ተስፋ መካከል የሚደረግ ውይይት ነው።</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collections Grid -->
+        <section id="collections" class="pb-32 px-8">
+            <div class="container mx-auto max-w-7xl">
+                <!-- Section Title -->
+                <div class="text-center mb-32 reveal">
+                    <h2 class="font-logo text-3xl tracking-luxury text-offBlack mb-6 uppercase">Our Collections</h2>
+                    <p class="text-xs text-gray-400 tracking-[0.2em] uppercase max-w-md mx-auto leading-relaxed">
+                        Discover our exclusive collections that blend Ethiopian heritage with contemporary luxury
+                        fashion.
+                    </p>
+                </div>
+
+                <!-- Grid Start -->
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-y-0">
+
+                    <!-- Tereter -->
+                    <div class="reveal">
+                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
+                            <img src="./terter.jpg"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                        </div>
+                        <h3 class="font-serif text-xl mb-2 text-offBlack">
+                            <span class="en-text">Tereter Collection</span>
+                            <span class="am-text hidden-lang font-amharic">ጥርጥር</span>
+                        </h3>
+                        <a href="#"
+                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">View
+                            Details</a>
+                    </div>
+
+                    <!-- Mabeb -->
+                    <div class="reveal delay-100">
+                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
+                            <img src="./mabeb.JPG"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                        </div>
+                        <h3 class="font-serif text-xl mb-2 text-offBlack">
+                            <span class="en-text">Mabeb Collection</span>
+                            <span class="am-text hidden-lang font-amharic">ማበብ ስብስብ</span>
+                        </h3>
+                        <a href="#"
+                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">View
+                            Details</a>
+                    </div>
+
+                    <!-- Itege -->
+                    <div class="reveal delay-200">
+                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
+                            <img src="./itege.jpg"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                        </div>
+                        <h3 class="font-serif text-xl mb-2 text-offBlack">
+                            <span class="en-text">Itege Collection</span>
+                            <span class="am-text hidden-lang font-amharic">እቴጌ ስብስብ</span>
+                        </h3>
+                        <a href="#"
+                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">View
+                            Details</a>
+                    </div>
+
+                    <!-- Scarf -->
+                    <div class="reveal">
+                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
+                            <img src="./scarf.JPG"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                        </div>
+                        <h3 class="font-serif text-xl mb-2 text-offBlack">
+                            <span class="en-text">Scarf Collection</span>
+                            <span class="am-text hidden-lang font-amharic">የሻርፕ ስብስብ</span>
+                        </h3>
+                        <a href="#"
+                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">View
+                            Details</a>
+                    </div>
+
+                    <!-- Wene -->
+                    <div class="reveal delay-100">
+                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
+                            <img src="./wene.jpg"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                        </div>
+                        <h3 class="font-serif text-xl mb-2 text-offBlack">
+                            <span class="en-text">Wene Collection</span>
+                            <span class="am-text hidden-lang font-amharic">ወኔ ስብስብ</span>
+                        </h3>
+                        <a href="#"
+                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">View
+                            Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE ATELIER -->
+        <section id="atelier" class="py-32 bg-white">
+            <div class="container mx-auto px-8 max-w-7xl">
+                <div class="flex flex-col md:flex-row items-center gap-20">
+                    <div class="w-full md:w-1/2 reveal">
+                        <div class="relative">
+                            <img src="./IMG_3310.JPG" class="w-full h-[600px] object-cover">
+                            <div class="absolute -bottom-10 -right-10 bg-offWhite p-12 hidden lg:block">
+                                <p class="font-serif text-2xl italic">"Hand-spun excellence."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 reveal delay-200">
+                        <span class="text-gold text-[0.6rem] tracking-[0.4em] uppercase block mb-8">The
+                            Craftsmanship</span>
+                        <h2 class="font-serif text-4xl md:text-5xl mb-10 leading-tight">
+                            <span class="en-text">In the hands of the masters.</span>
+                            <span class="am-text hidden-lang font-amharic">በባለሙያዎች እጅ የተጠነሰሰ።</span>
+                        </h2>
+                        <p class="text-gray-500 font-light leading-relaxed mb-8">
+                            <span class="en-text">Every stitch in our Ethiopian atelier is a preservation of culture. We
+                                use hand-woven Ethiopian cotton (Shemma), meticulously refined for the global stage. Our
+                                artisans spend hundreds of hours on a single garment, ensuring that luxury is felt in
+                                every thread.</span>
+                            <span class="am-text hidden-lang font-amharic">በኢትዮጵያ በሚገኘው ስቱዲዮችን ውስጥ የሚደረግ እያንዳንዱ ስፌት የባህል
+                                ጥበቃ ነው። በእጅ የተሰራውን የኢትዮጵያ ድርና ማግ (ሸማ) ለዓለም አቀፍ ደረጃ በሚመጥን መልኩ እናዘጋጃለን። ባለሙያዎቻችን በአንድ ልብስ
+                                ላይ በመቶዎች የሚቆጠሩ ሰዓታትን በማሳለፍ እውነተኛውን የልህቀት ትርጉም ይተረጉማሉ።</span>
+                        </p>
+                        <div class="flex space-x-12">
+                            <div>
+                                <span class="block font-logo text-2xl">100%</span>
+                                <span class="text-[0.5rem] uppercase tracking-widest text-gray-400">Ethiopian
+                                    Shemma</span>
+                            </div>
+                            <div>
+                                <span class="block font-logo text-2xl">
+                                    <span class="en-text">Ethiopian Made</span>
+                                    <span class="am-text hidden-lang font-amharic text-lg">በኢትዮጵያ የተሰራ</span>
+                                </span>
+                                <span class="text-[0.5rem] uppercase tracking-widest text-gray-400">Atelier
+                                    Origin</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BESPOKE -->
+        <section id="bespoke" class="py-32 bg-offBlack text-white">
+            <div class="container mx-auto px-8 max-w-5xl text-center">
+                <div class="reveal">
+                    <span class="text-champagne text-[0.6rem] tracking-[0.5em] uppercase block mb-10">Private
+                        Service</span>
+                    <h2 class="font-serif text-4xl md:text-6xl mb-12 italic">
+                        <span class="en-text">The Art of Bespoke</span>
+                        <span class="am-text hidden-lang font-amharic">ልዩ የልብስ ስፌት አገልግሎት</span>
+                    </h2>
+                    <div class="reveal delay-200">
+                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100 max-w-sm mx-auto">
+                            <img src="./hat.jpg"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                        </div>
+                        <h3 class="font-serif text-xl mb-8">
+                            <span class="en-text">Hat Collection</span>
+                            <span class="am-text hidden-lang font-amharic">የባርኔጣ ስብስብ</span>
+                        </h3>
+                    </div>
+                    <p class="text-gray-400 font-light leading-loose text-sm max-w-xl mx-auto mb-16">
+                        <span class="en-text">A silhouette crafted exclusively for you. Our bespoke service begins with
+                            a personal consultation to capture your essence in fabric and form.</span>
+                        <span class="am-text hidden-lang font-amharic">ለእርስዎ ብቻ የተለካና የተሰፋ ድንቅ ስራ። አገልግሎታችን የሚጀምረው
+                            የእርስዎን ፍላጎትና ማንነት በሚረዳ የግል ምክክር ነው።</span>
+                    </p>
+                    <a href="#"
+                        class="inline-block px-12 py-5 border border-champagne text-champagne text-[0.6rem] tracking-[0.3em] uppercase hover:bg-champagne hover:text-black transition-all duration-500">
+                        <span class="en-text">Request a Consultation</span>
+                        <span class="am-text hidden-lang font-amharic">ቀጠሮ ይያዙ</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOURNAL -->
+        <section id="journal" class="py-32 bg-offWhite">
+            <div class="container mx-auto px-8 max-w-7xl">
+                <div class="flex justify-between items-end mb-20 reveal">
+                    <div>
+                        <span class="text-burgundy text-[0.6rem] tracking-[0.4em] uppercase block mb-4">Journal</span>
+                        <h2 class="font-serif text-4xl">
+                            <span class="en-text">Notes from the Maison</span>
+                            <span class="am-text hidden-lang font-amharic">ከስቱዲዮችን የተገኙ ማስታወሻዎች</span>
+                        </h2>
+                    </div>
+                    <a href="#"
+                        class="hidden md:block text-[0.6rem] tracking-widest uppercase border-b border-black/20 pb-1">View
+                        Archive</a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="reveal group">
+                        <div class="overflow-hidden mb-8">
+                            <img src="./IMG_3302.JPG"
+                                class="w-full h-80 object-cover transition-transform duration-1000 group-hover:scale-105">
+                        </div>
+                        <span class="text-[0.5rem] text-gray-400 uppercase tracking-widest">January 2026</span>
+                        <h3 class="font-serif text-2xl mt-4 mb-4">
+                            <span class="en-text">The Re-birth of the Habesha Kemis</span>
+                            <span class="am-text hidden-lang font-amharic">የሀበሻ ቀሚስ አዲስ ህይወት</span>
+                        </h3>
+                        <p class="text-gray-500 text-sm font-light leading-relaxed">
+                            <span class="en-text">Exploring how traditional attire is finding its place in the wardrobes
+                                of the modern global elite.</span>
+                            <span class="am-text hidden-lang font-amharic">የባህል አልባሳት በዘመናዊው ዓለም አቀፍ መድረክ ላይ እንዴት ቦታቸውን
+                                እያገኙ እንደሆነ የተደረገ ዳሰሳ።</span>
+                        </p>
+                    </div>
+                    <div class="reveal delay-200 group">
+                        <div class="overflow-hidden mb-8">
+                            <img src="./sec.JPG"
+                                class="w-full h-80 object-cover transition-transform duration-1000 group-hover:scale-105">
+                        </div>
+                        <span class="text-[0.5rem] text-gray-400 uppercase tracking-widest">December 2025</span>
+                        <h3 class="font-serif text-2xl mt-4 mb-4">
+                            <span class="en-text">Sustainability in the Highlands</span>
+                            <span class="am-text hidden-lang font-amharic">ዘላቂ ጥበብ በደጋማው ስፍራ</span>
+                        </h3>
+                        <p class="text-gray-500 text-sm font-light leading-relaxed">
+                            <span class="en-text">A commitment to eco-conscious weaving practices that support local
+                                farming communities.</span>
+                            <span class="am-text hidden-lang font-amharic">ለአካባቢ ተስማሚ የሆኑ የሽመና ጥበቦችን በመጠቀም ማህበረሰቡን
+                                ስለመደገፍ ያለን ፅኑ እምነት።</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-100 py-24 px-8">
+            <div class="container mx-auto max-w-7xl">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20 text-center md:text-left">
+                    <div class="col-span-1 md:col-span-1">
+                        <h4 class="font-logo text-xl tracking-widest mb-8">Natanem</h4>
+                        <p class="text-[0.6rem] text-gray-400 leading-relaxed uppercase tracking-widest">
+                            Ethiopia<br>
+                            High Fashion House
+                        </p>
+                    </div>
+                    <div>
+                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">Collections</h5>
+                        <ul class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-4">
+                            <li><a href="#" class="hover:text-burgundy transition">Women's Couture</a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">Men's Bespoke</a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">Accessories</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">Maison</h5>
+                        <ul class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-4">
+                            <li><a href="#" class="hover:text-burgundy transition">Our Story</a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">Sustainability</a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">Contact</h5>
+                        <ul class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-4">
+                            <li><a href="#" class="hover:text-burgundy transition">Inquiry</a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">Showroom</a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    class="border-t border-gray-100 pt-12 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-[0.5rem] text-gray-300 tracking-[0.4em] uppercase">&copy; 2026 Natanem Couture
+                    </div>
+                    <div class="text-[0.5rem] text-gray-300 tracking-[0.4em] uppercase">All Rights Reserved</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // --- PRELOADER LOGIC ---
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+
+            // Artificial delay to ensure the animation is seen (min 2 seconds)
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                document.body.style.overflowY = 'auto'; // Re-enable scrolling
+            }, 2000);
+        });
+
+        // Slideshow
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        function showSlides() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slideIndex++;
+            if (slideIndex > slides.length) slideIndex = 1;
+            slides[slideIndex - 1].classList.add('active');
+            setTimeout(showSlides, 8000);
+        }
+        if (slides.length > 0) showSlides();
+
+        // Header Scroll
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                header.classList.remove('text-white');
+                header.classList.add('text-black');
+            } else {
+                header.classList.remove('scrolled');
+                header.classList.add('text-white');
+                header.classList.remove('text-black');
+            }
+        });
+
+        // Reveal logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Lang Toggle
+        const langBtn = document.getElementById('langToggle');
+        let currentLang = 'EN';
+        langBtn.addEventListener('click', () => {
+            const en = document.querySelectorAll('.en-text');
+            const am = document.querySelectorAll('.am-text');
+            const hEn = document.getElementById('hero-en');
+            const hAm = document.getElementById('hero-am');
+
+            if (currentLang === 'EN') {
+                currentLang = 'AM';
+                langBtn.textContent = 'EN';
+                en.forEach(e => e.classList.add('hidden-lang'));
+                am.forEach(a => {
+                    a.classList.remove('hidden-lang');
+                    a.classList.add('visible-lang');
+                });
+                hEn.classList.add('hidden-lang');
+                hAm.classList.remove('hidden-lang');
+                hAm.classList.add('visible-lang');
+            } else {
+                currentLang = 'EN';
+                langBtn.textContent = 'AM';
+                am.forEach(a => {
+                    a.classList.remove('visible-lang');
+                    a.classList.add('hidden-lang');
+                });
+                en.forEach(e => e.classList.remove('hidden-lang'));
+                hAm.classList.add('hidden-lang');
+                hAm.classList.remove('visible-lang');
+                hEn.classList.remove('hidden-lang');
+            }
+        });
+    </script>
 </body>
 
 </html>
