@@ -288,7 +288,7 @@
                 </a>
             </nav>
             <div class="w-1/3 flex justify-center text-center">
-                <a href="#" class="group block">
+                <a href="#" class="group block cursor-pointer" onclick="window.scrollTo(0,0); return false;">
                     <h1 class="brand-logo text-3xl md:text-5xl tracking-mega uppercase font-normal leading-none">Natanem
                     </h1>
                 </a>
@@ -371,95 +371,84 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-y-0">
                     
-                    <!-- 
-                        NOTE: HOW TO ADD MORE IMAGES
-                        Just add your image file paths inside the `data-images` array below. 
-                        Example: data-images='["./terter.JPG", "./terter_front.JPG", "./terter_back.JPG"]'
-                    -->
-
                     <!-- Tereter -->
-                    <div class="reveal collection-item cursor-pointer" data-images='["./terter.JPG", "./terter-alt1.JPG", "./terter-alt2.JPG"]'>
-                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
+                    <div class="reveal collection-item cursor-pointer group" data-images='["./terter.JPG", "./terter-alt1.JPG", "./terter-alt2.JPG"]'>
+                        <div class="aspect-[3/4] overflow-hidden mb-8 bg-gray-100">
                             <img src="./terter.JPG"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
                             <span class="en-text">Tereter Collection</span>
                             <span class="am-text hidden-lang font-amharic">ጥርጥር ስብስብ</span>
                         </h3>
-                        <a href="#"
-                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">
+                        <span class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 group-hover:text-burgundy transition-colors">
                             <span class="en-text">View Details</span>
                             <span class="am-text hidden-lang font-amharic">ዝርዝር ይመልከቱ</span>
-                        </a>
+                        </span>
                     </div>
 
                     <!-- Mabeb -->
-                    <div class="reveal delay-100 collection-item cursor-pointer" data-images='["./mabeb.JPG", "./mabeb-alt1.JPG"]'>
-                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
+                    <div class="reveal delay-100 collection-item cursor-pointer group" data-images='["./mabeb.JPG", "./mabeb-alt1.JPG"]'>
+                        <div class="aspect-[3/4] overflow-hidden mb-8 bg-gray-100">
                             <img src="./mabeb.JPG"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
                             <span class="en-text">Mabeb Collection</span>
                             <span class="am-text hidden-lang font-amharic">ማበብ ስብስብ</span>
                         </h3>
-                        <a href="#"
-                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">
+                        <span class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 group-hover:text-burgundy transition-colors">
                             <span class="en-text">View Details</span>
                             <span class="am-text hidden-lang font-amharic">ዝርዝር ይመልከቱ</span>
-                        </a>
+                        </span>
                     </div>
 
                     <!-- Itege -->
-                    <div class="reveal delay-200 collection-item cursor-pointer" data-images='["./itege.jpg", "./itege-alt1.jpg", "./itege-alt2.jpg"]'>
-                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
+                    <div class="reveal delay-200 collection-item cursor-pointer group" data-images='["./itege.jpg", "./itege-alt1.jpg", "./itege-alt2.jpg"]'>
+                        <div class="aspect-[3/4] overflow-hidden mb-8 bg-gray-100">
                             <img src="./itege.jpg"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
                             <span class="en-text">Itege Collection</span>
                             <span class="am-text hidden-lang font-amharic">እቴጌ ስብስብ</span>
                         </h3>
-                        <a href="#"
-                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">
+                        <span class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 group-hover:text-burgundy transition-colors">
                             <span class="en-text">View Details</span>
                             <span class="am-text hidden-lang font-amharic">ዝርዝር ይመልከቱ</span>
-                        </a>
+                        </span>
                     </div>
 
                     <!-- Scarf -->
-                    <div class="reveal collection-item cursor-pointer" data-images='["./scarf.JPG", "./scarf-alt1.JPG"]'>
-                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
+                    <div class="reveal collection-item cursor-pointer group" data-images='["./scarf.JPG", "./scarf-alt1.JPG"]'>
+                        <div class="aspect-[3/4] overflow-hidden mb-8 bg-gray-100">
                             <img src="./scarf.JPG"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
                             <span class="en-text">Scarf Collection</span>
                             <span class="am-text hidden-lang font-amharic">የሻርፕ ስብስብ</span>
                         </h3>
-                        <a href="#"
-                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">
+                        <span class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 group-hover:text-burgundy transition-colors">
                             <span class="en-text">View Details</span>
                             <span class="am-text hidden-lang font-amharic">ዝርዝር ይመልከቱ</span>
-                        </a>
+                        </span>
                     </div>
 
                     <!-- Wene -->
-                    <div class="reveal delay-100 collection-item cursor-pointer" data-images='["./wene.jpg", "./wene-alt1.jpg", "./wene-alt2.jpg", "./wene-alt3.jpg"]'>
-                        <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
+                    <div class="reveal delay-100 collection-item cursor-pointer group" data-images='["./wene.jpg", "./wene-alt1.jpg", "./wene-alt2.jpg", "./wene-alt3.jpg"]'>
+                        <div class="aspect-[3/4] overflow-hidden mb-8 bg-gray-100">
                             <img src="./wene.jpg"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
                             <span class="en-text">Wene Collection</span>
                             <span class="am-text hidden-lang font-amharic">ወኔ ስብስብ</span>
                         </h3>
-                        <a href="#"
-                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">
+                        <span class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 group-hover:text-burgundy transition-colors">
                             <span class="en-text">View Details</span>
                             <span class="am-text hidden-lang font-amharic">ዝርዝር ይመልከቱ</span>
-                        </a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -534,7 +523,8 @@
                         <span class="en-text">A silhouette crafted exclusively for you. Our bespoke service begins with a personal consultation to capture your essence in fabric and form.</span>
                         <span class="am-text hidden-lang font-amharic">ለእርስዎ ብቻ ተለክቶ የተሰራ ድንቅ ስራ። አገልግሎታችን የሚጀምረው የእርስዎን ማንነት በሚረዳ የግል ምክክር ነው።</span>
                     </p>
-                    <a href="#"
+                    <!-- Updated to trigger a phone call -->
+                    <a href="tel:+251925002947"
                         class="inline-block px-12 py-5 border border-champagne text-champagne text-[0.6rem] tracking-[0.3em] uppercase hover:bg-champagne hover:text-black transition-all duration-500">
                         <span class="en-text">Request a Consultation</span>
                         <span class="am-text hidden-lang font-amharic">ቀጠሮ ይያዙ</span>
@@ -554,10 +544,6 @@
                             <span class="am-text hidden-lang font-amharic">ከስቱዲዮችን ማስታወሻዎች</span>
                         </h2>
                     </div>
-                    <a href="#" class="hidden md:block text-[0.6rem] tracking-widest uppercase border-b border-black/20 pb-1">
-                        <span class="en-text">View Archive</span>
-                        <span class="am-text hidden-lang font-amharic">የቀደሙትን ይመልከቱ</span>
-                    </a>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -602,82 +588,71 @@
         </section>
 
         <!-- Footer -->
-        <footer class="bg-white border-t border-gray-100 py-24 px-8">
+        <footer class="bg-white border-t border-gray-100 pt-32 pb-16 px-8 overflow-hidden">
             <div class="container mx-auto max-w-7xl">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20 text-center md:text-left">
-                    <div class="col-span-1 md:col-span-1">
-                        <h4 class="font-logo text-xl tracking-widest mb-8">Natanem</h4>
-                        <p class="text-[0.6rem] text-gray-400 leading-relaxed uppercase tracking-widest">
-                            <span class="en-text">Ethiopia<br>High Fashion House</span>
-                            <span class="am-text hidden-lang font-amharic">ኢትዮጵያ<br>ልዩ የፋሽን ተቋም</span>
+                <!-- Top Section -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
+                    <!-- Brand Column -->
+                    <div class="col-span-1 md:col-span-2">
+                        <h4 class="font-logo text-3xl tracking-[0.3em] mb-10 brand-logo inline-block">Natanem</h4>
+                        <p class="text-[0.65rem] text-gray-400 leading-[2] uppercase tracking-[0.25em] max-w-sm">
+                            <span class="en-text">Redefining Ethiopian luxury through the lens of modern couture. Every piece tells a story of heritage, hand-crafted in our Addis Ababa atelier.</span>
+                            <span class="am-text hidden-lang font-amharic text-xs leading-relaxed">የኢትዮጵያን የልህቀት ፋሽን በዘመናዊ እይታ እንተረጉማለን። እያንዳንዱ ስራ በአዲስ አበባ ስቱዲዮችን በእጅ የተሰራ የውርስ ታሪክ አለው።</span>
                         </p>
                     </div>
-                    <div>
-                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">
-                            <span class="en-text">Collections</span>
-                            <span class="am-text hidden-lang font-amharic">ስብስቦች</span>
+
+                    <!-- Visit Column -->
+                    <div class="col-span-1">
+                        <h5 class="text-[0.6rem] uppercase tracking-[0.4em] font-semibold mb-8 text-offBlack border-b border-gray-100 pb-4 inline-block w-full">
+                            <span class="en-text">Visit Us</span>
+                            <span class="am-text hidden-lang font-amharic">ጎብኙን</span>
                         </h5>
-                        <ul class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-4">
-                            <li><a href="#" class="hover:text-burgundy transition">
-                                <span class="en-text">Women's Couture</span>
-                                <span class="am-text hidden-lang font-amharic">የሴቶች ፋሽን</span>
-                            </a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">
-                                <span class="en-text">Men's Bespoke</span>
-                                <span class="am-text hidden-lang font-amharic">የወንዶች ፋሽን</span>
-                            </a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">
-                                <span class="en-text">Accessories</span>
-                                <span class="am-text hidden-lang font-amharic">ጌጣጌጦች</span>
-                            </a></li>
-                        </ul>
+                        <div class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-3 leading-relaxed">
+                            <p class="text-offBlack font-medium">Addis Ababa, Ethiopia</p>
+                            <p>Bole Dembel City Center</p>
+                            <p>Abrus Complex</p>
+                            <p class="pt-4 italic">
+                                <span class="en-text">Mon — Sat: 9am to 5pm</span>
+                                <span class="am-text hidden-lang font-amharic">ከሰኞ — ቅዳሜ፡ ከጠዋቱ 3 እስከ ምሽቱ 1 ሰዓት</span>
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">
-                            <span class="en-text">Maison</span>
-                            <span class="am-text hidden-lang font-amharic">ተቋም</span>
-                        </h5>
-                        <ul class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-4">
-                            <li><a href="#" class="hover:text-burgundy transition">
-                                <span class="en-text">Our Story</span>
-                                <span class="am-text hidden-lang font-amharic">ታሪካችን</span>
-                            </a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">
-                                <span class="en-text">Sustainability</span>
-                                <span class="am-text hidden-lang font-amharic">ዘላቂነት</span>
-                            </a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">
-                                <span class="en-text">Careers</span>
-                                <span class="am-text hidden-lang font-amharic">የስራ እድሎች</span>
-                            </a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">
-                            <span class="en-text">Contact</span>
+
+                    <!-- Connect Column -->
+                    <div class="col-span-1">
+                        <h5 class="text-[0.6rem] uppercase tracking-[0.4em] font-semibold mb-8 text-offBlack border-b border-gray-100 pb-4 inline-block w-full">
+                            <span class="en-text">Connect</span>
                             <span class="am-text hidden-lang font-amharic">ግንኙነት</span>
                         </h5>
-                        <ul class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-4">
-                            <li><a href="#" class="hover:text-burgundy transition">
-                                <span class="en-text">Inquiry</span>
-                                <span class="am-text hidden-lang font-amharic">ጥያቄ</span>
-                            </a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">
-                                <span class="en-text">Showroom</span>
-                                <span class="am-text hidden-lang font-amharic">ማሳያ ክፍል</span>
-                            </a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">Instagram</a></li>
+                        <ul class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-5">
+                            <li>
+                                <a href="https://www.instagram.com/natanem_couture" target="_blank" class="hover:text-burgundy flex items-center gap-3 transition-colors duration-300">
+                                    <i class="fa-brands fa-instagram text-sm"></i> Instagram
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wa.me/251925002947" target="_blank" class="hover:text-burgundy flex items-center gap-3 transition-colors duration-300">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tel:+251925002947" class="hover:text-burgundy flex items-center gap-3 transition-colors duration-300">
+                                    <i class="fa-solid fa-phone text-xs"></i> +251 92 500 2947
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div class="border-t border-gray-100 pt-12 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    <div class="text-[0.5rem] text-gray-300 tracking-[0.4em] uppercase">
-                        <span class="en-text">&copy; 2026 Natanem Couture</span>
-                        <span class="am-text hidden-lang font-amharic">© ፳፻፲፰ ናታኒም ኩቱር</span>
+
+                <!-- Bottom Bar -->
+                <div class="border-t border-gray-100 pt-10 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 opacity-40">
+                    <div class="text-[0.5rem] tracking-[0.4em] uppercase order-2 md:order-1">
+                        <span class="en-text">&copy; 2026 Natanem Couture. All Rights Reserved.</span>
+                        <span class="am-text hidden-lang font-amharic">© ፳፻፲፰ ናታኒም ኩቱር። መብቱ በህግ የተጠበቀ ነው።</span>
                     </div>
-                    <div class="text-[0.5rem] text-gray-300 tracking-[0.4em] uppercase">
-                        <span class="en-text">All Rights Reserved</span>
-                        <span class="am-text hidden-lang font-amharic">መብቱ በህግ የተጠበቀ ነው</span>
+                    <div class="flex space-x-8 order-1 md:order-2">
+                        <a href="#" class="text-[0.5rem] tracking-[0.3em] uppercase hover:text-burgundy transition-colors">Privacy</a>
+                        <a href="#" class="text-[0.5rem] tracking-[0.3em] uppercase hover:text-burgundy transition-colors">Terms</a>
                     </div>
                 </div>
             </div>
@@ -810,7 +785,6 @@
         let currentImages = [];
         let currentImgIndex = 0;
 
-        // Attach click events to all collection items
         document.querySelectorAll('.collection-item').forEach(item => {
             item.addEventListener('click', (e) => {
                 e.preventDefault(); 
@@ -839,7 +813,6 @@
                 totalCountEl.textContent = currentImages.length;
                 modalImg.style.opacity = 1;
                 
-                // Hide arrows if there's only 1 image
                 prevBtn.style.display = currentImages.length > 1 ? 'block' : 'none';
                 nextBtn.style.display = currentImages.length > 1 ? 'block' : 'none';
             }, 150);
@@ -847,18 +820,17 @@
 
         function openModal() {
             modal.classList.remove('hidden');
-            // Trigger reflow to ensure the transition plays
             void modal.offsetWidth;
             modal.classList.remove('opacity-0');
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             modal.classList.add('opacity-0');
             setTimeout(() => {
                 modal.classList.add('hidden');
-                document.body.style.overflow = ''; // Restore background scrolling
-            }, 500); // Matches CSS transition duration
+                document.body.style.overflow = '';
+            }, 500);
         }
 
         function showPrevImage() {
@@ -873,17 +845,14 @@
             updateModalImage();
         }
 
-        // Modal Event Listeners
         closeBtn.addEventListener('click', closeModal);
         prevBtn.addEventListener('click', showPrevImage);
         nextBtn.addEventListener('click', showNextImage);
 
-        // Click outside the image to close
         modal.addEventListener('click', (e) => {
             if(e.target === modal) closeModal();
         });
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (!modal.classList.contains('hidden')) {
                 if (e.key === 'Escape') closeModal();
