@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Cinzel for Logo, Playfair for Headings, Montserrat for Body -->
+    <!-- Fonts: Cinzel (Logo), Playfair (Headings), Montserrat (Body), Menbere (Amharic) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&family=Noto+Sans+Ethiopic:wght@200;300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&family=Menbere&display=swap"
         rel="stylesheet">
 
     <script>
@@ -29,7 +29,7 @@
                         logo: ['Cinzel', 'serif'],
                         serif: ['Playfair Display', 'serif'],
                         sans: ['Montserrat', 'sans-serif'],
-                        amharic: ['Noto Sans Ethiopic', 'sans-serif']
+                        amharic: ['Menbere', 'serif']
                     },
                     letterSpacing: {
                         'mega': '0.35em',
@@ -44,11 +44,9 @@
             background-color: #FAFAFA;
             color: #111111;
             overflow-x: hidden;
-            /* Lock scroll initially for preloader */
             overflow-y: hidden;
         }
 
-        /* --- PRELOADER STYLES --- */
         #preloader {
             position: fixed;
             inset: 0;
@@ -127,8 +125,6 @@
             opacity: 0;
             visibility: hidden;
         }
-
-        /* --- END PRELOADER STYLES --- */
 
         .brand-logo {
             font-family: 'Cinzel', serif;
@@ -217,13 +213,17 @@
             transform: translateY(0);
         }
 
-        /* Language Toggle */
         .hidden-lang {
-            display: none;
+            display: none !important;
         }
 
         .visible-lang {
-            display: block;
+            display: block !important;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .visible-lang-inline {
+            display: inline-block !important;
             animation: fadeIn 0.8s ease;
         }
 
@@ -237,7 +237,6 @@
             }
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 4px;
         }
@@ -248,13 +247,6 @@
 
         ::-webkit-scrollbar-thumb {
             background: #C5A059;
-        }
-
-        .parallax-section {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
         }
     </style>
 </head>
@@ -273,7 +265,7 @@
 
     <!-- Hero Slideshow -->
     <div class="slideshow-container">
-        <div class="slide active" style="background-image: url('./first.jpg');"></div>
+        <div class="slide active" style="background-image: url('./first.JPG');"></div>
         <div class="hero-overlay"></div>
     </div>
 
@@ -282,9 +274,18 @@
         class="fixed w-full top-0 z-50 py-8 text-white transition-all duration-500 hover:bg-white hover:text-black">
         <div class="container mx-auto px-8 md:px-16 flex justify-between items-center">
             <nav class="hidden md:flex space-x-12 w-1/3">
-                <a href="#collections" class="nav-item">Collections</a>
-                <a href="#maison" class="nav-item">Maison</a>
-                <a href="#atelier" class="nav-item">Atelier</a>
+                <a href="#collections" class="nav-item">
+                    <span class="en-text">Collections</span>
+                    <span class="am-text hidden-lang font-amharic text-xs">ጥበቦቻችን</span>
+                </a>
+                <a href="#maison" class="nav-item">
+                    <span class="en-text">Maison</span>
+                    <span class="am-text hidden-lang font-amharic text-xs">ናታኒም</span>
+                </a>
+                <a href="#atelier" class="nav-item">
+                    <span class="en-text">Atelier</span>
+                    <span class="am-text hidden-lang font-amharic text-xs">ስፌት</span>
+                </a>
             </nav>
             <div class="w-1/3 flex justify-center text-center">
                 <a href="#" class="group block">
@@ -294,8 +295,14 @@
             </div>
             <div class="flex items-center justify-end space-x-10 w-1/3">
                 <nav class="hidden md:flex space-x-12">
-                    <a href="#bespoke" class="nav-item">Bespoke</a>
-                    <a href="#journal" class="nav-item">Journal</a>
+                    <a href="#bespoke" class="nav-item">
+                        <span class="en-text">Bespoke</span>
+                        <span class="am-text hidden-lang font-amharic text-xs">ልዩ ስራ</span>
+                    </a>
+                    <a href="#journal" class="nav-item">
+                        <span class="en-text">Journal</span>
+                        <span class="am-text hidden-lang font-amharic text-xs">መዝገብ</span>
+                    </a>
                 </nav>
                 <button
                     class="text-[0.65rem] border border-current px-3 py-1 tracking-widest hover:bg-white hover:text-black transition-all"
@@ -313,13 +320,15 @@
             </p>
             <h2 class="font-serif text-5xl md:text-8xl mb-12 font-light leading-tight reveal active delay-200">
                 <span id="hero-en">Heritage <i class="font-thin italic text-champagne">Reimagined</i></span>
-                <span id="hero-am" class="font-amharic hidden-lang text-4xl md:text-6xl font-normal">ጥበብ <i
-                        class="text-champagne">በዘመናዊ እይታ</i></span>
+                <span id="hero-am" class="font-amharic hidden-lang text-4xl md:text-6xl font-normal">ውርስ <i
+                        class="text-champagne">በአዲስ እይታ</i></span>
             </h2>
             <div class="reveal active delay-300">
                 <a href="#collections"
-                    class="text-[0.65rem] tracking-[0.3em] uppercase border-b border-white/40 pb-2 hover:border-white transition-all duration-500">Explore
-                    Collections</a>
+                    class="text-[0.65rem] tracking-[0.3em] uppercase border-b border-white/40 pb-2 hover:border-white transition-all duration-500">
+                    <span class="en-text">Explore Collections</span>
+                    <span class="am-text hidden-lang font-amharic">ጥበቦቻችንን ይጎብኙ</span>
+                </a>
             </div>
         </div>
     </section>
@@ -334,14 +343,13 @@
                     <span class="text-burgundy text-[0.6rem] tracking-[0.4em] uppercase block mb-8">The Maison</span>
                     <h2 class="font-serif text-3xl md:text-5xl mb-12 leading-tight text-offBlack">
                         <span class="en-text">Ethiopian soul. Modern silence.</span>
-                        <span class="am-text hidden-lang font-amharic">የኢትዮጵያ ስር-ነቀል ጥበብ በዘመናዊ ድምፅ-አልባ ፋሽን።</span>
+                        <span class="am-text hidden-lang font-amharic">የኢትዮጵያ ነፍስ። ዘመናዊ ረቂቅነት።</span>
                     </h2>
                     <p class="text-gray-500 font-light leading-loose text-sm max-w-2xl mx-auto">
                         <span class="en-text">Natanem Couture weaves ancestral storytelling into the quiet luxury of
                             modern silhouettes. A dialogue between the weight of history and the lightness of the
                             future.</span>
-                        <span class="am-text hidden-lang font-amharic">ናታነም የጥንት የታሪክ ትረካዎችን ከዘመናዊው የፋሽን ጥበብ ጋር በማዋሃድ
-                            ይሰራል። ይህ ጥበብ በትላንትናው ታሪክ ግርማና በነገው ብሩህ ተስፋ መካከል የሚደረግ ውይይት ነው።</span>
+                        <span class="am-text hidden-lang font-amharic">ናታኒም የጥንት የታሪክ ትረካዎችን ከዘመናዊው ረቂቅ የፋሽን ጥበብ ጋር በማዋሃድ ይሰራል። ይህ በትናንቱ የታሪክ ጥልቀትና በነገው ብሩህ ተስፋ መካከል የሚደረግ ውይይት ነው።</span>
                     </p>
                 </div>
             </div>
@@ -350,35 +358,44 @@
         <!-- Collections Grid -->
         <section id="collections" class="pb-32 px-8">
             <div class="container mx-auto max-w-7xl">
-                <!-- Section Title -->
                 <div class="text-center mb-32 reveal">
-                    <h2 class="font-logo text-3xl tracking-luxury text-offBlack mb-6 uppercase">Our Collections</h2>
+                    <h2 class="font-logo text-3xl tracking-luxury text-offBlack mb-6 uppercase">
+                        <span class="en-text">Our Collections</span>
+                        <span class="am-text hidden-lang font-amharic">ስብስቦቻችን</span>
+                    </h2>
                     <p class="text-xs text-gray-400 tracking-[0.2em] uppercase max-w-md mx-auto leading-relaxed">
-                        Discover our exclusive collections that blend Ethiopian heritage with contemporary luxury
-                        fashion.
+                        <span class="en-text">Discover our exclusive collections that blend Ethiopian heritage with contemporary luxury fashion.</span>
+                        <span class="am-text hidden-lang font-amharic">የኢትዮጵያን ውርስ ከዘመናዊው የልህቀት ፋሽን ጋር የሚያስተሳስሩ ልዩ ስብስቦቻችንን ይወቁ።</span>
                     </p>
                 </div>
 
-                <!-- Grid Start -->
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-y-0">
+                    
+                    <!-- 
+                        NOTE: HOW TO ADD MORE IMAGES
+                        Just add your image file paths inside the `data-images` array below. 
+                        Example: data-images='["./terter.JPG", "./terter_front.JPG", "./terter_back.JPG"]'
+                    -->
 
                     <!-- Tereter -->
-                    <div class="reveal">
+                    <div class="reveal collection-item cursor-pointer" data-images='["./terter.JPG", "./terter-alt1.JPG", "./terter-alt2.JPG"]'>
                         <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
-                            <img src="./terter.jpg"
+                            <img src="./terter.JPG"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
                             <span class="en-text">Tereter Collection</span>
-                            <span class="am-text hidden-lang font-amharic">ጥርጥር</span>
+                            <span class="am-text hidden-lang font-amharic">ጥርጥር ስብስብ</span>
                         </h3>
                         <a href="#"
-                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">View
-                            Details</a>
+                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">
+                            <span class="en-text">View Details</span>
+                            <span class="am-text hidden-lang font-amharic">ዝርዝር ይመልከቱ</span>
+                        </a>
                     </div>
 
                     <!-- Mabeb -->
-                    <div class="reveal delay-100">
+                    <div class="reveal delay-100 collection-item cursor-pointer" data-images='["./mabeb.JPG", "./mabeb-alt1.JPG"]'>
                         <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
                             <img src="./mabeb.JPG"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
@@ -388,12 +405,14 @@
                             <span class="am-text hidden-lang font-amharic">ማበብ ስብስብ</span>
                         </h3>
                         <a href="#"
-                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">View
-                            Details</a>
+                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">
+                            <span class="en-text">View Details</span>
+                            <span class="am-text hidden-lang font-amharic">ዝርዝር ይመልከቱ</span>
+                        </a>
                     </div>
 
                     <!-- Itege -->
-                    <div class="reveal delay-200">
+                    <div class="reveal delay-200 collection-item cursor-pointer" data-images='["./itege.jpg", "./itege-alt1.jpg", "./itege-alt2.jpg"]'>
                         <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
                             <img src="./itege.jpg"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
@@ -403,12 +422,14 @@
                             <span class="am-text hidden-lang font-amharic">እቴጌ ስብስብ</span>
                         </h3>
                         <a href="#"
-                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">View
-                            Details</a>
+                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">
+                            <span class="en-text">View Details</span>
+                            <span class="am-text hidden-lang font-amharic">ዝርዝር ይመልከቱ</span>
+                        </a>
                     </div>
 
                     <!-- Scarf -->
-                    <div class="reveal">
+                    <div class="reveal collection-item cursor-pointer" data-images='["./scarf.JPG", "./scarf-alt1.JPG"]'>
                         <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
                             <img src="./scarf.JPG"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
@@ -418,12 +439,14 @@
                             <span class="am-text hidden-lang font-amharic">የሻርፕ ስብስብ</span>
                         </h3>
                         <a href="#"
-                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">View
-                            Details</a>
+                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">
+                            <span class="en-text">View Details</span>
+                            <span class="am-text hidden-lang font-amharic">ዝርዝር ይመልከቱ</span>
+                        </a>
                     </div>
 
                     <!-- Wene -->
-                    <div class="reveal delay-100">
+                    <div class="reveal delay-100 collection-item cursor-pointer" data-images='["./wene.jpg", "./wene-alt1.jpg", "./wene-alt2.jpg", "./wene-alt3.jpg"]'>
                         <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100">
                             <img src="./wene.jpg"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
@@ -433,8 +456,10 @@
                             <span class="am-text hidden-lang font-amharic">ወኔ ስብስብ</span>
                         </h3>
                         <a href="#"
-                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">View
-                            Details</a>
+                            class="text-[0.55rem] tracking-[0.2em] uppercase text-gray-400 hover:text-burgundy transition-colors">
+                            <span class="en-text">View Details</span>
+                            <span class="am-text hidden-lang font-amharic">ዝርዝር ይመልከቱ</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -448,39 +473,37 @@
                         <div class="relative">
                             <img src="./IMG_3310.JPG" class="w-full h-[600px] object-cover">
                             <div class="absolute -bottom-10 -right-10 bg-offWhite p-12 hidden lg:block">
-                                <p class="font-serif text-2xl italic">"Hand-spun excellence."</p>
+                                <p class="font-serif text-2xl italic">
+                                    <span class="en-text">"Hand-spun excellence."</span>
+                                    <span class="am-text hidden-lang font-amharic">"በእጅ የተፈተለ ልህቀት።"</span>
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="w-full md:w-1/2 reveal delay-200">
-                        <span class="text-gold text-[0.6rem] tracking-[0.4em] uppercase block mb-8">The
-                            Craftsmanship</span>
+                        <span class="text-gold text-[0.6rem] tracking-[0.4em] uppercase block mb-8">The Craftsmanship</span>
                         <h2 class="font-serif text-4xl md:text-5xl mb-10 leading-tight">
                             <span class="en-text">In the hands of the masters.</span>
                             <span class="am-text hidden-lang font-amharic">በባለሙያዎች እጅ የተጠነሰሰ።</span>
                         </h2>
                         <p class="text-gray-500 font-light leading-relaxed mb-8">
-                            <span class="en-text">Every stitch in our Ethiopian atelier is a preservation of culture. We
-                                use hand-woven Ethiopian cotton (Shemma), meticulously refined for the global stage. Our
-                                artisans spend hundreds of hours on a single garment, ensuring that luxury is felt in
-                                every thread.</span>
-                            <span class="am-text hidden-lang font-amharic">በኢትዮጵያ በሚገኘው ስቱዲዮችን ውስጥ የሚደረግ እያንዳንዱ ስፌት የባህል
-                                ጥበቃ ነው። በእጅ የተሰራውን የኢትዮጵያ ድርና ማግ (ሸማ) ለዓለም አቀፍ ደረጃ በሚመጥን መልኩ እናዘጋጃለን። ባለሙያዎቻችን በአንድ ልብስ
-                                ላይ በመቶዎች የሚቆጠሩ ሰዓታትን በማሳለፍ እውነተኛውን የልህቀት ትርጉም ይተረጉማሉ።</span>
+                            <span class="en-text">Every stitch in our Ethiopian atelier is a preservation of culture. We use hand-woven Ethiopian cotton (Shemma), meticulously refined for the global stage. Our artisans spend hundreds of hours on a single garment, ensuring that luxury is felt in every thread.</span>
+                            <span class="am-text hidden-lang font-amharic">በእኛ ስቱዲዮ ውስጥ የሚደረግ እያንዳንዱ ስፌት የባህል ጥበቃ ነው። በእጅ የተሰራውን የኢትዮጵያ ድርና ማግ (ሸማ) ለዓለም አቀፍ ደረጃ በሚመጥን መልኩ እናዘጋጃለን። ባለሙያዎቻችን በአንድ ልብስ ላይ በመቶዎች የሚቆጠሩ ሰዓታትን በማሳለፍ እውነተኛውን የልህቀት ትርጉም ይተረጉማሉ።</span>
                         </p>
                         <div class="flex space-x-12">
                             <div>
                                 <span class="block font-logo text-2xl">100%</span>
-                                <span class="text-[0.5rem] uppercase tracking-widest text-gray-400">Ethiopian
-                                    Shemma</span>
+                                <span class="text-[0.5rem] uppercase tracking-widest text-gray-400">
+                                    <span class="en-text">Ethiopian Shemma</span>
+                                    <span class="am-text hidden-lang font-amharic">የኢትዮጵያ ሸማ</span>
+                                </span>
                             </div>
                             <div>
                                 <span class="block font-logo text-2xl">
                                     <span class="en-text">Ethiopian Made</span>
                                     <span class="am-text hidden-lang font-amharic text-lg">በኢትዮጵያ የተሰራ</span>
                                 </span>
-                                <span class="text-[0.5rem] uppercase tracking-widest text-gray-400">Atelier
-                                    Origin</span>
+                                <span class="text-[0.5rem] uppercase tracking-widest text-gray-400">Atelier Origin</span>
                             </div>
                         </div>
                     </div>
@@ -492,11 +515,10 @@
         <section id="bespoke" class="py-32 bg-offBlack text-white">
             <div class="container mx-auto px-8 max-w-5xl text-center">
                 <div class="reveal">
-                    <span class="text-champagne text-[0.6rem] tracking-[0.5em] uppercase block mb-10">Private
-                        Service</span>
+                    <span class="text-champagne text-[0.6rem] tracking-[0.5em] uppercase block mb-10">Private Service</span>
                     <h2 class="font-serif text-4xl md:text-6xl mb-12 italic">
                         <span class="en-text">The Art of Bespoke</span>
-                        <span class="am-text hidden-lang font-amharic">ልዩ የልብስ ስፌት አገልግሎት</span>
+                        <span class="am-text hidden-lang font-amharic">ልዩ የልብስ ስፌት ጥበብ</span>
                     </h2>
                     <div class="reveal delay-200">
                         <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100 max-w-sm mx-auto">
@@ -509,10 +531,8 @@
                         </h3>
                     </div>
                     <p class="text-gray-400 font-light leading-loose text-sm max-w-xl mx-auto mb-16">
-                        <span class="en-text">A silhouette crafted exclusively for you. Our bespoke service begins with
-                            a personal consultation to capture your essence in fabric and form.</span>
-                        <span class="am-text hidden-lang font-amharic">ለእርስዎ ብቻ የተለካና የተሰፋ ድንቅ ስራ። አገልግሎታችን የሚጀምረው
-                            የእርስዎን ፍላጎትና ማንነት በሚረዳ የግል ምክክር ነው።</span>
+                        <span class="en-text">A silhouette crafted exclusively for you. Our bespoke service begins with a personal consultation to capture your essence in fabric and form.</span>
+                        <span class="am-text hidden-lang font-amharic">ለእርስዎ ብቻ ተለክቶ የተሰራ ድንቅ ስራ። አገልግሎታችን የሚጀምረው የእርስዎን ማንነት በሚረዳ የግል ምክክር ነው።</span>
                     </p>
                     <a href="#"
                         class="inline-block px-12 py-5 border border-champagne text-champagne text-[0.6rem] tracking-[0.3em] uppercase hover:bg-champagne hover:text-black transition-all duration-500">
@@ -531,12 +551,13 @@
                         <span class="text-burgundy text-[0.6rem] tracking-[0.4em] uppercase block mb-4">Journal</span>
                         <h2 class="font-serif text-4xl">
                             <span class="en-text">Notes from the Maison</span>
-                            <span class="am-text hidden-lang font-amharic">ከስቱዲዮችን የተገኙ ማስታወሻዎች</span>
+                            <span class="am-text hidden-lang font-amharic">ከስቱዲዮችን ማስታወሻዎች</span>
                         </h2>
                     </div>
-                    <a href="#"
-                        class="hidden md:block text-[0.6rem] tracking-widest uppercase border-b border-black/20 pb-1">View
-                        Archive</a>
+                    <a href="#" class="hidden md:block text-[0.6rem] tracking-widest uppercase border-b border-black/20 pb-1">
+                        <span class="en-text">View Archive</span>
+                        <span class="am-text hidden-lang font-amharic">የቀደሙትን ይመልከቱ</span>
+                    </a>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -545,16 +566,17 @@
                             <img src="./IMG_3302.JPG"
                                 class="w-full h-80 object-cover transition-transform duration-1000 group-hover:scale-105">
                         </div>
-                        <span class="text-[0.5rem] text-gray-400 uppercase tracking-widest">January 2026</span>
+                        <span class="text-[0.5rem] text-gray-400 uppercase tracking-widest">
+                            <span class="en-text">January 2026</span>
+                            <span class="am-text hidden-lang font-amharic">ጥር ፳፻፲፰</span>
+                        </span>
                         <h3 class="font-serif text-2xl mt-4 mb-4">
                             <span class="en-text">The Re-birth of the Habesha Kemis</span>
                             <span class="am-text hidden-lang font-amharic">የሀበሻ ቀሚስ አዲስ ህይወት</span>
                         </h3>
                         <p class="text-gray-500 text-sm font-light leading-relaxed">
-                            <span class="en-text">Exploring how traditional attire is finding its place in the wardrobes
-                                of the modern global elite.</span>
-                            <span class="am-text hidden-lang font-amharic">የባህል አልባሳት በዘመናዊው ዓለም አቀፍ መድረክ ላይ እንዴት ቦታቸውን
-                                እያገኙ እንደሆነ የተደረገ ዳሰሳ።</span>
+                            <span class="en-text">Exploring how traditional attire is finding its place in the wardrobes of the modern global elite.</span>
+                            <span class="am-text hidden-lang font-amharic">የባህል አልባሳት በዘመናዊው ዓለም አቀፍ መድረክ ላይ እንዴት ቦታቸውን እያገኙ እንደሆነ የተደረገ ዳሰሳ።</span>
                         </p>
                     </div>
                     <div class="reveal delay-200 group">
@@ -562,16 +584,17 @@
                             <img src="./sec.JPG"
                                 class="w-full h-80 object-cover transition-transform duration-1000 group-hover:scale-105">
                         </div>
-                        <span class="text-[0.5rem] text-gray-400 uppercase tracking-widest">December 2025</span>
+                        <span class="text-[0.5rem] text-gray-400 uppercase tracking-widest">
+                            <span class="en-text">December 2025</span>
+                            <span class="am-text hidden-lang font-amharic">ታኅሣሥ ፳፻፲፰</span>
+                        </span>
                         <h3 class="font-serif text-2xl mt-4 mb-4">
                             <span class="en-text">Sustainability in the Highlands</span>
-                            <span class="am-text hidden-lang font-amharic">ዘላቂ ጥበብ በደጋማው ስፍራ</span>
+                            <span class="am-text hidden-lang font-amharic">ዘላቂነት በደጋማው ስፍራ</span>
                         </h3>
                         <p class="text-gray-500 text-sm font-light leading-relaxed">
-                            <span class="en-text">A commitment to eco-conscious weaving practices that support local
-                                farming communities.</span>
-                            <span class="am-text hidden-lang font-amharic">ለአካባቢ ተስማሚ የሆኑ የሽመና ጥበቦችን በመጠቀም ማህበረሰቡን
-                                ስለመደገፍ ያለን ፅኑ እምነት።</span>
+                            <span class="en-text">A commitment to eco-conscious weaving practices that support local farming communities.</span>
+                            <span class="am-text hidden-lang font-amharic">ለአካባቢ ተስማሚ የሆኑ የሽመና ጥበቦችን በመጠቀም ማህበረሰቡን ስለመደገፍ ያለን ፅኑ እምነት።</span>
                         </p>
                     </div>
                 </div>
@@ -585,58 +608,120 @@
                     <div class="col-span-1 md:col-span-1">
                         <h4 class="font-logo text-xl tracking-widest mb-8">Natanem</h4>
                         <p class="text-[0.6rem] text-gray-400 leading-relaxed uppercase tracking-widest">
-                            Ethiopia<br>
-                            High Fashion House
+                            <span class="en-text">Ethiopia<br>High Fashion House</span>
+                            <span class="am-text hidden-lang font-amharic">ኢትዮጵያ<br>ልዩ የፋሽን ተቋም</span>
                         </p>
                     </div>
                     <div>
-                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">Collections</h5>
+                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">
+                            <span class="en-text">Collections</span>
+                            <span class="am-text hidden-lang font-amharic">ስብስቦች</span>
+                        </h5>
                         <ul class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-4">
-                            <li><a href="#" class="hover:text-burgundy transition">Women's Couture</a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">Men's Bespoke</a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">Accessories</a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">
+                                <span class="en-text">Women's Couture</span>
+                                <span class="am-text hidden-lang font-amharic">የሴቶች ፋሽን</span>
+                            </a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">
+                                <span class="en-text">Men's Bespoke</span>
+                                <span class="am-text hidden-lang font-amharic">የወንዶች ፋሽን</span>
+                            </a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">
+                                <span class="en-text">Accessories</span>
+                                <span class="am-text hidden-lang font-amharic">ጌጣጌጦች</span>
+                            </a></li>
                         </ul>
                     </div>
                     <div>
-                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">Maison</h5>
+                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">
+                            <span class="en-text">Maison</span>
+                            <span class="am-text hidden-lang font-amharic">ተቋም</span>
+                        </h5>
                         <ul class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-4">
-                            <li><a href="#" class="hover:text-burgundy transition">Our Story</a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">Sustainability</a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">Careers</a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">
+                                <span class="en-text">Our Story</span>
+                                <span class="am-text hidden-lang font-amharic">ታሪካችን</span>
+                            </a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">
+                                <span class="en-text">Sustainability</span>
+                                <span class="am-text hidden-lang font-amharic">ዘላቂነት</span>
+                            </a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">
+                                <span class="en-text">Careers</span>
+                                <span class="am-text hidden-lang font-amharic">የስራ እድሎች</span>
+                            </a></li>
                         </ul>
                     </div>
                     <div>
-                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">Contact</h5>
+                        <h5 class="text-[0.6rem] uppercase tracking-[0.3em] font-semibold mb-6">
+                            <span class="en-text">Contact</span>
+                            <span class="am-text hidden-lang font-amharic">ግንኙነት</span>
+                        </h5>
                         <ul class="text-[0.6rem] uppercase tracking-widest text-gray-400 space-y-4">
-                            <li><a href="#" class="hover:text-burgundy transition">Inquiry</a></li>
-                            <li><a href="#" class="hover:text-burgundy transition">Showroom</a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">
+                                <span class="en-text">Inquiry</span>
+                                <span class="am-text hidden-lang font-amharic">ጥያቄ</span>
+                            </a></li>
+                            <li><a href="#" class="hover:text-burgundy transition">
+                                <span class="en-text">Showroom</span>
+                                <span class="am-text hidden-lang font-amharic">ማሳያ ክፍል</span>
+                            </a></li>
                             <li><a href="#" class="hover:text-burgundy transition">Instagram</a></li>
                         </ul>
                     </div>
                 </div>
-                <div
-                    class="border-t border-gray-100 pt-12 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    <div class="text-[0.5rem] text-gray-300 tracking-[0.4em] uppercase">&copy; 2026 Natanem Couture
+                <div class="border-t border-gray-100 pt-12 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-[0.5rem] text-gray-300 tracking-[0.4em] uppercase">
+                        <span class="en-text">&copy; 2026 Natanem Couture</span>
+                        <span class="am-text hidden-lang font-amharic">© ፳፻፲፰ ናታኒም ኩቱር</span>
                     </div>
-                    <div class="text-[0.5rem] text-gray-300 tracking-[0.4em] uppercase">All Rights Reserved</div>
+                    <div class="text-[0.5rem] text-gray-300 tracking-[0.4em] uppercase">
+                        <span class="en-text">All Rights Reserved</span>
+                        <span class="am-text hidden-lang font-amharic">መብቱ በህግ የተጠበቀ ነው</span>
+                    </div>
                 </div>
             </div>
         </footer>
     </div>
 
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="fixed inset-0 z-[100] hidden bg-offBlack/95 flex-col justify-center items-center opacity-0 transition-opacity duration-500">
+        <!-- Close -->
+        <button id="close-modal" class="absolute top-8 right-8 text-white hover:text-champagne text-2xl z-50 transition-colors">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <!-- Nav -->
+        <button id="prev-img" class="absolute left-4 md:left-12 top-1/2 -translate-y-1/2 text-white hover:text-champagne text-2xl md:text-4xl z-50 p-4 transition-colors">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button id="next-img" class="absolute right-4 md:right-12 top-1/2 -translate-y-1/2 text-white hover:text-champagne text-2xl md:text-4xl z-50 p-4 transition-colors">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <!-- Image Container -->
+        <div class="relative w-full h-full max-h-[85vh] p-12 md:p-24 flex justify-center items-center pointer-events-none">
+            <img id="modal-img" src="" class="max-h-full max-w-full object-contain shadow-2xl transition-opacity duration-300 pointer-events-auto">
+        </div>
+
+        <!-- Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-champagne tracking-[0.3em] text-[0.65rem] font-logo uppercase">
+            <span class="en-text inline">Image</span>
+            <span class="am-text hidden-lang font-amharic inline">ምስል</span>
+            <span id="current-img-index">1</span> / <span id="total-img-count">3</span>
+        </div>
+    </div>
+
     <script>
-        // --- PRELOADER LOGIC ---
+        // Preloader and Slideshow logic
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
-
-            // Artificial delay to ensure the animation is seen (min 2 seconds)
             setTimeout(() => {
                 preloader.classList.add('fade-out');
-                document.body.style.overflowY = 'auto'; // Re-enable scrolling
+                document.body.style.overflowY = 'auto';
             }, 2000);
         });
 
-        // Slideshow
         let slideIndex = 0;
         const slides = document.querySelectorAll('.slide');
         function showSlides() {
@@ -648,7 +733,7 @@
         }
         if (slides.length > 0) showSlides();
 
-        // Header Scroll
+        // Header Scrolled effect
         const header = document.getElementById('main-header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
@@ -662,7 +747,7 @@
             }
         });
 
-        // Reveal logic
+        // Intersection Observer for Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -672,7 +757,7 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Lang Toggle
+        // Language Toggle Logic
         const langBtn = document.getElementById('langToggle');
         let currentLang = 'EN';
         langBtn.addEventListener('click', () => {
@@ -687,7 +772,11 @@
                 en.forEach(e => e.classList.add('hidden-lang'));
                 am.forEach(a => {
                     a.classList.remove('hidden-lang');
-                    a.classList.add('visible-lang');
+                    if(a.tagName === 'SPAN' && (a.parentElement.tagName === 'A' || a.parentElement.tagName === 'P' || a.classList.contains('inline'))) {
+                         a.classList.add('visible-lang-inline');
+                    } else {
+                         a.classList.add('visible-lang');
+                    }
                 });
                 hEn.classList.add('hidden-lang');
                 hAm.classList.remove('hidden-lang');
@@ -697,12 +786,109 @@
                 langBtn.textContent = 'AM';
                 am.forEach(a => {
                     a.classList.remove('visible-lang');
+                    a.classList.remove('visible-lang-inline');
                     a.classList.add('hidden-lang');
                 });
                 en.forEach(e => e.classList.remove('hidden-lang'));
                 hAm.classList.add('hidden-lang');
                 hAm.classList.remove('visible-lang');
                 hEn.classList.remove('hidden-lang');
+            }
+        });
+
+        // ==========================================
+        // NEW GALLERY MODAL LOGIC
+        // ==========================================
+        const modal = document.getElementById('gallery-modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeBtn = document.getElementById('close-modal');
+        const prevBtn = document.getElementById('prev-img');
+        const nextBtn = document.getElementById('next-img');
+        const currentIndexEl = document.getElementById('current-img-index');
+        const totalCountEl = document.getElementById('total-img-count');
+
+        let currentImages = [];
+        let currentImgIndex = 0;
+
+        // Attach click events to all collection items
+        document.querySelectorAll('.collection-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                
+                const imagesData = item.getAttribute('data-images');
+                if (imagesData) {
+                    try {
+                        currentImages = JSON.parse(imagesData);
+                        if (currentImages.length > 0) {
+                            currentImgIndex = 0;
+                            updateModalImage();
+                            openModal();
+                        }
+                    } catch (error) {
+                        console.error("Error parsing gallery images:", error);
+                    }
+                }
+            });
+        });
+
+        function updateModalImage() {
+            modalImg.style.opacity = 0; 
+            setTimeout(() => {
+                modalImg.src = currentImages[currentImgIndex];
+                currentIndexEl.textContent = currentImgIndex + 1;
+                totalCountEl.textContent = currentImages.length;
+                modalImg.style.opacity = 1;
+                
+                // Hide arrows if there's only 1 image
+                prevBtn.style.display = currentImages.length > 1 ? 'block' : 'none';
+                nextBtn.style.display = currentImages.length > 1 ? 'block' : 'none';
+            }, 150);
+        }
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            // Trigger reflow to ensure the transition plays
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore background scrolling
+            }, 500); // Matches CSS transition duration
+        }
+
+        function showPrevImage() {
+            if (currentImages.length <= 1) return;
+            currentImgIndex = (currentImgIndex - 1 + currentImages.length) % currentImages.length;
+            updateModalImage();
+        }
+
+        function showNextImage() {
+            if (currentImages.length <= 1) return;
+            currentImgIndex = (currentImgIndex + 1) % currentImages.length;
+            updateModalImage();
+        }
+
+        // Modal Event Listeners
+        closeBtn.addEventListener('click', closeModal);
+        prevBtn.addEventListener('click', showPrevImage);
+        nextBtn.addEventListener('click', showNextImage);
+
+        // Click outside the image to close
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) closeModal();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') showPrevImage();
+                if (e.key === 'ArrowRight') showNextImage();
             }
         });
     </script>
