@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Fonts: Cinzel (Logo), Playfair (Headings), Montserrat (Body), Menbere (Amharic) -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&family=Menbere&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500&display=swap"
         rel="stylesheet">
 
     <script>
@@ -29,7 +28,7 @@
                         logo: ['Cinzel', 'serif'],
                         serif: ['Playfair Display', 'serif'],
                         sans: ['Montserrat', 'sans-serif'],
-                        amharic: ['Menbere', 'serif']
+                        amharic: ['serif']
                     },
                     letterSpacing: {
                         'mega': '0.35em',
@@ -40,13 +39,15 @@
         }
     </script>
     <style>
+        /* ── Base ── */
         body {
             background-color: #FAFAFA;
             color: #111111;
             overflow-x: hidden;
-            overflow-y: hidden;
+            /* NOTE: overflow-y is intentionally NOT hidden here — it was the main scroll bug */
         }
 
+        /* ── Preloader ── */
         #preloader {
             position: fixed;
             inset: 0;
@@ -57,6 +58,12 @@
             justify-content: center;
             align-items: center;
             transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s;
+        }
+
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
         .ripple-container {
@@ -121,11 +128,7 @@
             }
         }
 
-        #preloader.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
+        /* ── Brand shimmer ── */
         .brand-logo {
             font-family: 'Cinzel', serif;
             background: linear-gradient(135deg, #C5A059 0%, #E6D8BE 50%, #C5A059 100%);
@@ -142,12 +145,20 @@
             }
         }
 
-        header.scrolled {
+        /* ── Header ── */
+        #main-header {
+            transition: background-color 0.4s ease, padding 0.4s ease, color 0.3s ease;
+        }
+
+        #main-header.scrolled {
             background-color: rgba(255, 255, 255, 0.98);
             padding-top: 1.25rem;
             padding-bottom: 1.25rem;
+            color: #111111 !important;
+            box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
         }
 
+        /* ── Nav underline ── */
         .nav-item {
             font-size: 0.65rem;
             text-transform: uppercase;
@@ -172,6 +183,7 @@
             width: 100%;
         }
 
+        /* ── Hero slideshow ── */
         .slideshow-container {
             position: fixed;
             top: 0;
@@ -188,7 +200,9 @@
             background-position: center;
             opacity: 0;
             transform: scale(1.05);
+            /* GPU-accelerated transitions only */
             transition: opacity 2s ease-in-out, transform 10s linear;
+            will-change: opacity, transform;
         }
 
         .slide.active {
@@ -202,10 +216,12 @@
             inset: 0;
         }
 
+        /* ── Scroll reveal ── */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+            transition: opacity 1.2s cubic-bezier(0.215, 0.61, 0.355, 1),
+                transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
         }
 
         .reveal.active {
@@ -213,6 +229,7 @@
             transform: translateY(0);
         }
 
+        /* ── Language helpers ── */
         .hidden-lang {
             display: none !important;
         }
@@ -237,6 +254,28 @@
             }
         }
 
+        /* ── Gallery modal ──
+           Fix: use opacity + pointer-events instead of hidden/flex conflict */
+        #gallery-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(17, 17, 17, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        #gallery-modal.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ── Scrollbar ── */
         ::-webkit-scrollbar {
             width: 4px;
         }
@@ -247,6 +286,19 @@
 
         ::-webkit-scrollbar-thumb {
             background: #C5A059;
+        }
+
+        /* ── Image lazy-load fade-in ── */
+        img {
+            transition: opacity 0.4s ease;
+        }
+
+        img[data-lazy] {
+            opacity: 0;
+        }
+
+        img.loaded {
+            opacity: 1;
         }
     </style>
 </head>
@@ -263,16 +315,17 @@
         <div class="loader-logo">Natanem Couture</div>
     </div>
 
-    <!-- Hero Slideshow -->
+    <!-- Hero Slideshow (background) -->
     <div class="slideshow-container">
         <div class="slide active" style="background-image: url('./first.JPG');"></div>
         <div class="hero-overlay"></div>
     </div>
 
     <!-- Header -->
-    <header id="main-header"
-        class="fixed w-full top-0 z-50 py-8 text-white transition-all duration-500 hover:bg-white hover:text-black">
+    <header id="main-header" class="fixed w-full top-0 z-50 py-8 text-white">
         <div class="container mx-auto px-8 md:px-16 flex justify-between items-center">
+
+            <!-- Left nav -->
             <nav class="hidden md:flex space-x-12 w-1/3">
                 <a href="#collections" class="nav-item">
                     <span class="en-text">Collections</span>
@@ -287,12 +340,17 @@
                     <span class="am-text hidden-lang font-amharic text-xs">ስፌት</span>
                 </a>
             </nav>
+
+            <!-- Logo -->
             <div class="w-1/3 flex justify-center text-center">
-                <a href="#" class="group block cursor-pointer" onclick="window.scrollTo(0,0); return false;">
+                <a href="#" class="group block cursor-pointer"
+                    onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
                     <h1 class="brand-logo text-3xl md:text-5xl tracking-mega uppercase font-normal leading-none">Natanem
                     </h1>
                 </a>
             </div>
+
+            <!-- Right nav + lang toggle -->
             <div class="flex items-center justify-end space-x-10 w-1/3">
                 <nav class="hidden md:flex space-x-12">
                     <a href="#bespoke" class="nav-item">
@@ -318,12 +376,12 @@
                 <span class="en-text">Ethiopian Made</span>
                 <span class="am-text hidden-lang font-amharic text-lg">በኢትዮጵያ የተሰራ</span>
             </p>
-            <h2 class="font-serif text-5xl md:text-8xl mb-12 font-light leading-tight reveal active delay-200">
+            <h2 class="font-serif text-5xl md:text-8xl mb-12 font-light leading-tight reveal active">
                 <span id="hero-en">Heritage <i class="font-thin italic text-champagne">Reimagined</i></span>
                 <span id="hero-am" class="font-amharic hidden-lang text-4xl md:text-6xl font-normal">ውርስ <i
                         class="text-champagne">በአዲስ እይታ</i></span>
             </h2>
-            <div class="reveal active delay-300">
+            <div class="reveal active">
                 <a href="#collections"
                     class="text-[0.65rem] tracking-[0.3em] uppercase border-b border-white/40 pb-2 hover:border-white transition-all duration-500">
                     <span class="en-text">Explore Collections</span>
@@ -336,7 +394,7 @@
     <!-- Content Area -->
     <div class="bg-offWhite relative z-20">
 
-        <!-- Intro Section (Maison) -->
+        <!-- Maison / Intro -->
         <section id="maison" class="py-32 md:py-48 px-8">
             <div class="container mx-auto max-w-5xl text-center">
                 <div class="reveal">
@@ -376,10 +434,9 @@
 
                     <!-- Tereter -->
                     <div class="reveal collection-item cursor-pointer group"
-                        data-images='["./ter 2.JPG", "./ter 3.JPG", "./ter 4.JPG", "./ter 5.JPG"]'>
-
+                        data-images='["./ter 2.JPG","./ter 3.JPG","./ter 4.JPG","./ter 5.JPG"]'>
                         <div class="aspect-[3/4] overflow-hidden mb-8 bg-gray-100">
-                            <img src="./terter.JPG"
+                            <img src="./terter.JPG" loading="lazy" alt="Tereter Collection"
                                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
@@ -395,9 +452,9 @@
 
                     <!-- Mabeb -->
                     <div class="reveal delay-100 collection-item cursor-pointer group"
-                        data-images='["./ma 1.JPG", "./ma 2.JPG", "./ma 5.JPG","./ma 6.JPG","./ma 7.JPG","./ma 8.JPG"]'>
+                        data-images='["./ma 1.JPG","./ma 2.JPG","./ma 5.JPG","./ma 6.JPG","./ma 7.JPG","./ma 8.JPG"]'>
                         <div class="aspect-[3/4] overflow-hidden mb-8 bg-gray-100">
-                            <img src="./mabeb.JPG"
+                            <img src="./mabeb.JPG" loading="lazy" alt="Mabeb Collection"
                                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
@@ -413,9 +470,9 @@
 
                     <!-- Itege -->
                     <div class="reveal delay-200 collection-item cursor-pointer group"
-                        data-images='["./ite 1.JPG", "./ite 2.JPG", "./ite 3.JPG", "./ite 4.JPG", "./ite 5.JPG", "./ite 6.JPG", "./ite 7.JPG","./ite 8.JPG"]'>
+                        data-images='["./ite 1.JPG","./ite 2.JPG","./ite 3.JPG","./ite 4.JPG","./ite 5.JPG","./ite 6.JPG","./ite 7.JPG","./ite 8.JPG"]'>
                         <div class="aspect-[3/4] overflow-hidden mb-8 bg-gray-100">
-                            <img src="./itege.jpg"
+                            <img src="./itege.jpg" loading="lazy" alt="Itege Collection"
                                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
@@ -431,9 +488,9 @@
 
                     <!-- Scarf -->
                     <div class="reveal collection-item cursor-pointer group"
-                        data-images='["./scarf.JPG", "./scarf-alt1.JPG"]'>
+                        data-images='["./scarf.JPG","./scarf-alt1.JPG"]'>
                         <div class="aspect-[3/4] overflow-hidden mb-8 bg-gray-100">
-                            <img src="./scarf.JPG"
+                            <img src="./scarf.JPG" loading="lazy" alt="Scarf Collection"
                                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
@@ -449,9 +506,9 @@
 
                     <!-- Wene -->
                     <div class="reveal delay-100 collection-item cursor-pointer group"
-                        data-images='["./wene.jpg", "./wene-alt1.jpg", "./wene-alt2.jpg", "./wene-alt3.jpg"]'>
+                        data-images='["./wene.jpg","./wene-alt1.jpg","./wene-alt2.jpg","./wene-alt3.jpg"]'>
                         <div class="aspect-[3/4] overflow-hidden mb-8 bg-gray-100">
-                            <img src="./wene.jpg"
+                            <img src="./wene.jpg" loading="lazy" alt="Wene Collection"
                                 class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-2 text-offBlack">
@@ -468,13 +525,14 @@
             </div>
         </section>
 
-        <!-- THE ATELIER -->
+        <!-- The Atelier -->
         <section id="atelier" class="py-32 bg-white">
             <div class="container mx-auto px-8 max-w-7xl">
                 <div class="flex flex-col md:flex-row items-center gap-20">
                     <div class="w-full md:w-1/2 reveal">
                         <div class="relative">
-                            <img src="./IMG_3310.JPG" class="w-full h-[600px] object-cover">
+                            <img src="./IMG_3310.JPG" loading="lazy" alt="Atelier"
+                                class="w-full h-[600px] object-cover">
                             <div class="absolute -bottom-10 -right-10 bg-offWhite p-12 hidden lg:block">
                                 <p class="font-serif text-2xl italic">
                                     <span class="en-text">"Hand-spun excellence."</span>
@@ -496,8 +554,8 @@
                                 artisans spend hundreds of hours on a single garment, ensuring that luxury is felt in
                                 every thread.</span>
                             <span class="am-text hidden-lang font-amharic">በእኛ ስቱዲዮ ውስጥ የሚደረግ እያንዳንዱ ስፌት የባህል ጥበቃ ነው።
-                                በእጅ የተሰራውን የኢትዮጵያ ድርና ማግ (ሸማ) ለዓለም አቀፍ ደረጃ በሚመጥን መልኩ እናዘጋጃለን። ባለሙያዎቻችን በአንድ ልብስ ላይ በመቶዎች
-                                የሚቆጠሩ ሰዓታትን በማሳለፍ እውነተኛውን የልህቀት ትርጉም ይተረጉማሉ።</span>
+                                በእጅ የተሰራውን የኢትዮጵያ ድርና ማግ (ሸማ) ለዓለም አቀፍ ደረጃ በሚመጥን መልኩ እናዘጋጃለን። ባለሙያዎቻችን በአንድ ልብስ ላይ
+                                በመቶዎች የሚቆጠሩ ሰዓታትን በማሳለፍ እውነተኛውን የልህቀት ትርጉም ይተረጉማሉ።</span>
                         </p>
                         <div class="flex space-x-12">
                             <div>
@@ -521,7 +579,7 @@
             </div>
         </section>
 
-        <!-- BESPOKE -->
+        <!-- Bespoke -->
         <section id="bespoke" class="py-32 bg-offBlack text-white">
             <div class="container mx-auto px-8 max-w-5xl text-center">
                 <div class="reveal">
@@ -533,7 +591,7 @@
                     </h2>
                     <div class="reveal delay-200">
                         <div class="aspect-[3/4] overflow-hidden mb-8 group bg-gray-100 max-w-sm mx-auto">
-                            <img src="./hat.jpg"
+                            <img src="./hat.jpg" loading="lazy" alt="Hat Collection"
                                 class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 group-hover:scale-105">
                         </div>
                         <h3 class="font-serif text-xl mb-8">
@@ -544,10 +602,9 @@
                     <p class="text-gray-400 font-light leading-loose text-sm max-w-xl mx-auto mb-16">
                         <span class="en-text">A silhouette crafted exclusively for you. Our bespoke service begins with
                             a personal consultation to capture your essence in fabric and form.</span>
-                        <span class="am-text hidden-lang font-amharic">ለእርስዎ ብቻ ተለክቶ የተሰራ ድንቅ ስራ። አገልግሎታችን የሚጀምረው የእርስዎን
-                            ማንነት በሚረዳ የግል ምክክር ነው።</span>
+                        <span class="am-text hidden-lang font-amharic">ለእርስዎ ብቻ ተለክቶ የተሰራ ድንቅ ስራ። አገልግሎታችን የሚጀምረው
+                            የእርስዎን ማንነት በሚረዳ የግል ምክክር ነው።</span>
                     </p>
-                    <!-- Updated to trigger a phone call -->
                     <a href="tel:+251925002947"
                         class="inline-block px-12 py-5 border border-champagne text-champagne text-[0.6rem] tracking-[0.3em] uppercase hover:bg-champagne hover:text-black transition-all duration-500">
                         <span class="en-text">Request a Consultation</span>
@@ -557,7 +614,7 @@
             </div>
         </section>
 
-        <!-- JOURNAL -->
+        <!-- Journal -->
         <section id="journal" class="py-32 bg-offWhite">
             <div class="container mx-auto px-8 max-w-7xl">
                 <div class="flex justify-between items-end mb-20 reveal">
@@ -573,7 +630,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div class="reveal group">
                         <div class="overflow-hidden mb-8">
-                            <img src="./IMG_3302.JPG"
+                            <img src="./IMG_3302.JPG" loading="lazy" alt="Journal image 1"
                                 class="w-full h-80 object-cover transition-transform duration-1000 group-hover:scale-105">
                         </div>
                         <span class="text-[0.5rem] text-gray-400 uppercase tracking-widest">
@@ -593,7 +650,7 @@
                     </div>
                     <div class="reveal delay-200 group">
                         <div class="overflow-hidden mb-8">
-                            <img src="./sec.JPG"
+                            <img src="./sec.JPG" loading="lazy" alt="Journal image 2"
                                 class="w-full h-80 object-cover transition-transform duration-1000 group-hover:scale-105">
                         </div>
                         <span class="text-[0.5rem] text-gray-400 uppercase tracking-widest">
@@ -618,9 +675,9 @@
         <!-- Footer -->
         <footer class="bg-white border-t border-gray-100 pt-32 pb-16 px-8 overflow-hidden">
             <div class="container mx-auto max-w-7xl">
-                <!-- Top Section -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
-                    <!-- Brand Column -->
+
+                    <!-- Brand -->
                     <div class="col-span-1 md:col-span-2">
                         <h4 class="font-logo text-3xl tracking-[0.3em] mb-10 brand-logo inline-block">Natanem</h4>
                         <p class="text-[0.65rem] text-gray-400 leading-[2] uppercase tracking-[0.25em] max-w-sm">
@@ -631,7 +688,7 @@
                         </p>
                     </div>
 
-                    <!-- Visit Column -->
+                    <!-- Visit -->
                     <div class="col-span-1">
                         <h5
                             class="text-[0.6rem] uppercase tracking-[0.4em] font-semibold mb-8 text-offBlack border-b border-gray-100 pb-4 inline-block w-full">
@@ -649,7 +706,7 @@
                         </div>
                     </div>
 
-                    <!-- Connect Column -->
+                    <!-- Connect -->
                     <div class="col-span-1">
                         <h5
                             class="text-[0.6rem] uppercase tracking-[0.4em] font-semibold mb-8 text-offBlack border-b border-gray-100 pb-4 inline-block w-full">
@@ -679,7 +736,7 @@
                     </div>
                 </div>
 
-                <!-- Bottom Bar -->
+                <!-- Bottom bar -->
                 <div
                     class="border-t border-gray-100 pt-10 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 opacity-40">
                     <div class="text-[0.5rem] tracking-[0.4em] uppercase order-2 md:order-1">
@@ -697,16 +754,14 @@
         </footer>
     </div>
 
-    <!-- Gallery Modal -->
-    <div id="gallery-modal"
-        class="fixed inset-0 z-[100] hidden bg-offBlack/95 flex-col justify-center items-center opacity-0 transition-opacity duration-500">
-        <!-- Close -->
+    <!-- Gallery Modal
+         Fix: replaced hidden/flex class conflict with CSS opacity + pointer-events approach -->
+    <div id="gallery-modal">
         <button id="close-modal"
             class="absolute top-8 right-8 text-white hover:text-champagne text-2xl z-50 transition-colors">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
-        <!-- Nav -->
         <button id="prev-img"
             class="absolute left-4 md:left-12 top-1/2 -translate-y-1/2 text-white hover:text-champagne text-2xl md:text-4xl z-50 p-4 transition-colors">
             <i class="fa-solid fa-chevron-left"></i>
@@ -716,14 +771,13 @@
             <i class="fa-solid fa-chevron-right"></i>
         </button>
 
-        <!-- Image Container -->
         <div
             class="relative w-full h-full max-h-[85vh] p-12 md:p-24 flex justify-center items-center pointer-events-none">
-            <img id="modal-img" src=""
-                class="max-h-full max-w-full object-contain shadow-2xl transition-opacity duration-300 pointer-events-auto">
+            <img id="modal-img" src="" alt="Gallery image"
+                class="max-h-full max-w-full object-contain shadow-2xl pointer-events-auto"
+                style="transition: opacity 0.3s ease;">
         </div>
 
-        <!-- Indicator -->
         <div
             class="absolute bottom-8 left-1/2 -translate-x-1/2 text-champagne tracking-[0.3em] text-[0.65rem] font-logo uppercase">
             <span class="en-text inline">Image</span>
@@ -733,92 +787,104 @@
     </div>
 
     <script>
-        // Preloader and Slideshow logic
-        window.addEventListener('load', () => {
+        // ── Preloader ──────────────────────────────────────────────
+        // Using DOMContentLoaded + a short delay instead of waiting for all
+        // images (window load) which can hang on slow connections.
+        document.addEventListener('DOMContentLoaded', () => {
             const preloader = document.getElementById('preloader');
             setTimeout(() => {
                 preloader.classList.add('fade-out');
-                document.body.style.overflowY = 'auto';
-            }, 2000);
+                // Body scroll was NOT blocked on purpose — see CSS fix above
+            }, 1800);
         });
 
-        let slideIndex = 0;
+        // ── Slideshow ──────────────────────────────────────────────
+        // Slides are controlled by index; only one setInterval, no recursion.
         const slides = document.querySelectorAll('.slide');
-        function showSlides() {
-            slides.forEach(slide => slide.classList.remove('active'));
-            slideIndex++;
-            if (slideIndex > slides.length) slideIndex = 1;
-            slides[slideIndex - 1].classList.add('active');
-            setTimeout(showSlides, 8000);
-        }
-        if (slides.length > 0) showSlides();
+        let slideIndex = 0;
 
-        // Header Scrolled effect
+        if (slides.length > 1) {
+            setInterval(() => {
+                slides[slideIndex].classList.remove('active');
+                slideIndex = (slideIndex + 1) % slides.length;
+                slides[slideIndex].classList.add('active');
+            }, 8000);
+        }
+
+        // ── Header scroll effect ───────────────────────────────────
+        // Use passive listener for better scroll performance.
         const header = document.getElementById('main-header');
+        let lastScroll = 0;
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
+            const y = window.scrollY;
+            if (y > 100) {
                 header.classList.add('scrolled');
-                header.classList.remove('text-white');
-                header.classList.add('text-black');
             } else {
                 header.classList.remove('scrolled');
-                header.classList.add('text-white');
-                header.classList.remove('text-black');
             }
-        });
+            lastScroll = y;
+        }, { passive: true });
 
-        // Intersection Observer for Animations
+        // ── Scroll-reveal (IntersectionObserver) ──────────────────
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // stop watching once revealed
                 }
             });
         }, { threshold: 0.1 });
+
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Language Toggle Logic
+        // ── Language toggle ────────────────────────────────────────
+        // Cache DOM queries up front instead of re-querying on every click.
         const langBtn = document.getElementById('langToggle');
+        const enEls = Array.from(document.querySelectorAll('.en-text'));
+        const amEls = Array.from(document.querySelectorAll('.am-text'));
+        const heroEn = document.getElementById('hero-en');
+        const heroAm = document.getElementById('hero-am');
         let currentLang = 'EN';
-        langBtn.addEventListener('click', () => {
-            const en = document.querySelectorAll('.en-text');
-            const am = document.querySelectorAll('.am-text');
-            const hEn = document.getElementById('hero-en');
-            const hAm = document.getElementById('hero-am');
 
+        function isInline(el) {
+            const tag = el.tagName;
+            return tag === 'SPAN' && (
+                el.parentElement.tagName === 'A' ||
+                el.parentElement.tagName === 'P' ||
+                el.classList.contains('inline')
+            );
+        }
+
+        langBtn.addEventListener('click', () => {
             if (currentLang === 'EN') {
                 currentLang = 'AM';
                 langBtn.textContent = 'EN';
-                en.forEach(e => e.classList.add('hidden-lang'));
-                am.forEach(a => {
+
+                enEls.forEach(e => e.classList.add('hidden-lang'));
+                amEls.forEach(a => {
                     a.classList.remove('hidden-lang');
-                    if (a.tagName === 'SPAN' && (a.parentElement.tagName === 'A' || a.parentElement.tagName === 'P' || a.classList.contains('inline'))) {
-                        a.classList.add('visible-lang-inline');
-                    } else {
-                        a.classList.add('visible-lang');
-                    }
+                    a.classList.add(isInline(a) ? 'visible-lang-inline' : 'visible-lang');
                 });
-                hEn.classList.add('hidden-lang');
-                hAm.classList.remove('hidden-lang');
-                hAm.classList.add('visible-lang');
+                heroEn.classList.add('hidden-lang');
+                heroAm.classList.remove('hidden-lang');
+                heroAm.classList.add('visible-lang');
             } else {
                 currentLang = 'EN';
                 langBtn.textContent = 'AM';
-                am.forEach(a => {
-                    a.classList.remove('visible-lang');
-                    a.classList.remove('visible-lang-inline');
+
+                amEls.forEach(a => {
+                    a.classList.remove('visible-lang', 'visible-lang-inline');
                     a.classList.add('hidden-lang');
                 });
-                en.forEach(e => e.classList.remove('hidden-lang'));
-                hAm.classList.add('hidden-lang');
-                hAm.classList.remove('visible-lang');
-                hEn.classList.remove('hidden-lang');
+                enEls.forEach(e => e.classList.remove('hidden-lang'));
+                heroAm.classList.add('hidden-lang');
+                heroAm.classList.remove('visible-lang');
+                heroEn.classList.remove('hidden-lang');
             }
         });
 
-        // ==========================================
-        // NEW GALLERY MODAL LOGIC
-        // ==========================================
+        // ── Gallery modal ──────────────────────────────────────────
         const modal = document.getElementById('gallery-modal');
         const modalImg = document.getElementById('modal-img');
         const closeBtn = document.getElementById('close-modal');
@@ -828,82 +894,87 @@
         const totalCountEl = document.getElementById('total-img-count');
 
         let currentImages = [];
-        let currentImgIndex = 0;
-
-        document.querySelectorAll('.collection-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                const imagesData = item.getAttribute('data-images');
-                if (imagesData) {
-                    try {
-                        currentImages = JSON.parse(imagesData);
-                        if (currentImages.length > 0) {
-                            currentImgIndex = 0;
-                            updateModalImage();
-                            openModal();
-                        }
-                    } catch (error) {
-                        console.error("Error parsing gallery images:", error);
-                    }
-                }
-            });
-        });
+        let currentImgIdx = 0;
 
         function updateModalImage() {
             modalImg.style.opacity = 0;
-            setTimeout(() => {
-                modalImg.src = currentImages[currentImgIndex];
-                currentIndexEl.textContent = currentImgIndex + 1;
+            // Preload image before showing
+            const img = new Image();
+            img.src = currentImages[currentImgIdx];
+            img.onload = () => {
+                modalImg.src = img.src;
+                currentIndexEl.textContent = currentImgIdx + 1;
                 totalCountEl.textContent = currentImages.length;
                 modalImg.style.opacity = 1;
+            };
+            img.onerror = () => {
+                // Still update even if image fails
+                modalImg.src = currentImages[currentImgIdx];
+                currentIndexEl.textContent = currentImgIdx + 1;
+                totalCountEl.textContent = currentImages.length;
+                modalImg.style.opacity = 1;
+            };
 
-                prevBtn.style.display = currentImages.length > 1 ? 'block' : 'none';
-                nextBtn.style.display = currentImages.length > 1 ? 'block' : 'none';
-            }, 150);
+            const hasMultiple = currentImages.length > 1;
+            prevBtn.style.visibility = hasMultiple ? 'visible' : 'hidden';
+            nextBtn.style.visibility = hasMultiple ? 'visible' : 'hidden';
         }
 
         function openModal() {
-            modal.classList.remove('hidden');
-            void modal.offsetWidth;
-            modal.classList.remove('opacity-0');
+            modal.classList.add('is-open');
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            modal.classList.add('opacity-0');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = '';
-            }, 500);
+            modal.classList.remove('is-open');
+            document.body.style.overflow = '';
         }
 
-        function showPrevImage() {
+        function showPrev() {
             if (currentImages.length <= 1) return;
-            currentImgIndex = (currentImgIndex - 1 + currentImages.length) % currentImages.length;
+            currentImgIdx = (currentImgIdx - 1 + currentImages.length) % currentImages.length;
             updateModalImage();
         }
 
-        function showNextImage() {
+        function showNext() {
             if (currentImages.length <= 1) return;
-            currentImgIndex = (currentImgIndex + 1) % currentImages.length;
+            currentImgIdx = (currentImgIdx + 1) % currentImages.length;
             updateModalImage();
         }
+
+        document.querySelectorAll('.collection-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const raw = item.getAttribute('data-images');
+                if (!raw) return;
+                try {
+                    const imgs = JSON.parse(raw);
+                    if (imgs.length > 0) {
+                        currentImages = imgs;
+                        currentImgIdx = 0;
+                        updateModalImage();
+                        openModal();
+                    }
+                } catch (err) {
+                    console.error('Gallery parse error:', err);
+                }
+            });
+        });
 
         closeBtn.addEventListener('click', closeModal);
-        prevBtn.addEventListener('click', showPrevImage);
-        nextBtn.addEventListener('click', showNextImage);
+        prevBtn.addEventListener('click', showPrev);
+        nextBtn.addEventListener('click', showNext);
 
+        // Close when clicking the backdrop (not the image)
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
         });
 
         document.addEventListener('keydown', (e) => {
-            if (!modal.classList.contains('hidden')) {
-                if (e.key === 'Escape') closeModal();
-                if (e.key === 'ArrowLeft') showPrevImage();
-                if (e.key === 'ArrowRight') showNextImage();
-            }
+            if (!modal.classList.contains('is-open')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') showPrev();
+            if (e.key === 'ArrowRight') showNext();
         });
     </script>
 </body>
